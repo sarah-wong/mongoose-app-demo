@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
 const User = require("./user")
 
-async function validateUserID(str){
-    const id = mongoose.Types.ObjectId(str)
+async function validateUserID(id){
     const user = await User.findById(id);
     return user?true:false;
 }
 
 const messageSchema = mongoose.Schema({
     userID : {
-        type: String,
+        type: mongoose.Types.ObjectId,
         required: true,
         validate: validateUserID
     },
