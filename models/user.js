@@ -2,13 +2,6 @@ const mongoose = require("mongoose");
 const validator = require("email-validator");
 
 const userSchema = new mongoose.Schema({
-    accountID : {
-        type: Number,
-        index: true,
-        required: true,
-        unique: true,
-        min: 0,
-    },
     email : {
         type: String,
         unique: true,
