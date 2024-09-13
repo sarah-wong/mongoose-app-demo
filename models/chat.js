@@ -8,12 +8,16 @@ const chatSchema = mongoose.Schema({
         lowercase: true,
         match: /^[0-9a-z]+(?:-[0-9a-z]+)*$/
     },
-    userIDList : {
-        type: [Number],
+    userIDArray : {
+        type: [mongoose.Types.ObjectId],
         required: true,
         alias: "users"
     },
-    messages : {
-        type: []
+    messageArray : {
+        type: [mongoose.Types.ObjectId],
+        required: true,
+        alias: "messages"
     }
 })
+
+const Chat = mongoose.model("Chat", chatSchema)
