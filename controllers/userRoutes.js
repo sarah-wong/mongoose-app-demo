@@ -1,10 +1,12 @@
+require("dotenv").config();
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 async function encrypt(str, saltRounds=8){
+    const SECRET = process.env.SECRET || "";
     let passwordHash;
-    bcrypt.hash(str, saltRounds).then((hash)=>passwordHash=hash);
+    bcrypt.hash(str + SECRET, saltRounds).then((hash)=>passwordHash=hash);
     return passwordHash;
 }
 
